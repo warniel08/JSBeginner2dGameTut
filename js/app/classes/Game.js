@@ -2,9 +2,9 @@ define(['Class', 'Display', 'Assets'], function (Class, Display, Assets) {
     var _this;
     var running = false;
     var title, width, height, g, display;
-    var ast = new Assets("test", "res/textures/zelda.jpg", Assets.DEFAULT_WIDTH, Assets.DEFAULT_HEIGHT);
-    var img = ast.sheet.crop(0, 325, 66, 80);
-    var img2 = ast.sheet.crop(80, 325, 66, 80);
+    
+//    var img2 = ast.sheet.crop(80, 325, 66, 80);
+    
     var Game = Class.extend({
         init: function(_title, _width, _height) {
             _this = this;
@@ -22,10 +22,11 @@ define(['Class', 'Display', 'Assets'], function (Class, Display, Assets) {
     function tick(_td) {
     
     }
+    var idle = Assets.getAssets("zelda").idle;
     function render() {
         g.clearRect(0, 0, width, height);
-        g.myDrawImage(img, 10, 15, 32, 32);
-        g.myDrawImage(img2, 60, 15, 32, 32);
+        g.myDrawImage(idle, 20, 20, Assets.getAssets('zelda').width, Assets.getAssets('zelda').height);
+//        g.myDrawImage(img2, 60, 15, 32, 32);
     }
     
     Game.prototype.run = function() {
