@@ -3,7 +3,7 @@
  * MIT Licensed.
  */
 // Inspired by base2 and Prototype
-define(function(){
+define (function() {
   var initializing = false, fnTest = /xyz/.test(function(){xyz;}) ? /\b_super\b/ : /.*/;
  
   // The base Class implementation (does nothing)
@@ -61,4 +61,5 @@ define(function(){
      
     return Class;
   };
+  return Class;
 });
