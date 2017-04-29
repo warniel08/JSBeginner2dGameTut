@@ -5,8 +5,9 @@ requirejs.config({
 		"Class": "libs/class",
 		"Jquery": "libs/jquery",
 		// Classes
-		"Launcher": "app/classes/Launcher",
-        "Display": "app/class/Display"
+        "Display": "app/classes/display/Display",
+        "Game": "/app/classes/Game",
+        "Launcher": "app/classes/Launcher"
 	}
 });
 
