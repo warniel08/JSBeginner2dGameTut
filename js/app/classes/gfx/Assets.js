@@ -18,5 +18,7 @@ define(['Class', 'ImageLoader', 'SpriteSheet'], function(Class, ImageLoader, Spr
         return assets[_name];
     }
     
+    var ast = new Assets("zelda", "res/textures/zelda.jpg", 35, 42);
+    ast.idle = ast.sheet.crop(3, 325, 66, 80);
     return Assets;
 });
