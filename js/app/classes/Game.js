@@ -16,14 +16,13 @@ define(['Class', 'Display'], function (Class, Display) {
         display = new Display(title, width, height);
         g = display.getGraphics();
     }
-    var x = 20;
-    var y = 30;
+    
     function tick(_td) {
-        x += 20 * _td;
+    
     }
     function render() {
         g.clearRect(0, 0, width, height);
-        g.fillRect(x, y, 200, 50);
+        g.fillRect(20, 20, 200, 50);
     }
     
     Game.prototype.run = function() {
