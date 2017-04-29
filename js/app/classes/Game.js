@@ -56,4 +56,5 @@ define(['Class', 'Display'], function (Class, Display) {
         running = true;
         this.run();
     }
+    return Game;
 });
