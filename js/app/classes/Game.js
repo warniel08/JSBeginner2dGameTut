@@ -1,8 +1,10 @@
-define(['Class', 'Display'], function (Class, Display) {
+define(['Class', 'Display', 'Assets'], function (Class, Display, Assets) {
     var _this;
     var running = false;
     var title, width, height, g, display;
-    
+    var ast = new Assets("test", "res/textures/zelda.jpg", Assets.DEFAULT_WIDTH, Assets.DEFAULT_HEIGHT);
+    var img = ast.sheet.crop(0, 325, 66, 80);
+    var img2 = ast.sheet.crop(80, 325, 66, 80);
     var Game = Class.extend({
         init: function(_title, _width, _height) {
             _this = this;
@@ -16,14 +18,14 @@ define(['Class', 'Display'], function (Class, Display) {
         display = new Display(title, width, height);
         g = display.getGraphics();
     }
-    var x = 20;
-    var y = 30;
+    
     function tick(_td) {
-        x += 20 * _td;
+    
     }
     function render() {
         g.clearRect(0, 0, width, height);
-        g.fillRect(x, y, 200, 50);
+        g.myDrawImage(img, 10, 15, 32, 32);
+        g.myDrawImage(img2, 60, 15, 32, 32);
     }
     
     Game.prototype.run = function() {
