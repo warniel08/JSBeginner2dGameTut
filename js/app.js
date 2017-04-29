@@ -7,7 +7,7 @@ requirejs.config({
 		// Classes
 		"Launcher": "app/classes/Launcher",
         "Display": "app/classes/display/Display",
-        "Game": "/app/classes/Game"
+        "Game": "app/classes/Game"
 	}
 });
 
