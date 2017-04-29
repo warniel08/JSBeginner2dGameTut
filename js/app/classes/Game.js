@@ -14,12 +14,14 @@ define(['Class', 'Display'], function (Class, Display) {
     
     function init() {
         display = new Display(title, width, height);
+        g = display.getGraphics();
     }
     function tick(_td) {
         
     }
     function render() {
-        
+        g.clearRect(0, 0, width, height);
+        g.fillRect(20, 20, 200, 50);
     }
     
     Game.prototype.run = function() {
@@ -32,12 +34,19 @@ define(['Class', 'Display'], function (Class, Display) {
         var timer = 0;
         var ticks = 0;
         function loop() {
-            if (running) {
+            if(running) {
                 now = Date.now();
                 delta = now - lastTime;
                 timer += delta;
                 lastTime = now;
             }
+            if(timer >= timePerTick) {
+                dt = timer/1000;
+                tick(dt);
+                render();
+                timer = 0;
+            }
+            window.requestAnimationFrame(loop);
         }
         loop();
     }
