@@ -1,9 +1,8 @@
-define(['Class', 'Display', 'Assets'], function (Class, Display, Assets) {
+define(['Class', 'Display', 'State', 'GameState'], function (Class, Display, State, GameState) {
     var _this;
     var running = false;
     var title, width, height, g, display;
-    
-//    var img2 = ast.sheet.crop(80, 325, 66, 80);
+    var gameState, menuState, settingsState;
     
     var Game = Class.extend({
         init: function(_title, _width, _height) {
@@ -17,16 +16,21 @@ define(['Class', 'Display', 'Assets'], function (Class, Display, Assets) {
     function init() {
         display = new Display(title, width, height);
         g = display.getGraphics();
+        gameState = new GameState();
+        State.setState(gameState);
     }
     
-    function tick(_td) {
-    
+    function tick(_dt) {
+        if(State.getState() != null) {
+            State.getState().tick(_dt);
+        }
     }
-    var idle = Assets.getAssets("zelda").idle;
+    
     function render() {
         g.clearRect(0, 0, width, height);
-        g.myDrawImage(idle, 20, 20, Assets.getAssets('zelda').width, Assets.getAssets('zelda').height);
-//        g.myDrawImage(img2, 60, 15, 32, 32);
+        if(State.getState() != null) {
+            State.getState().render(g);
+        }
     }
     
     Game.prototype.run = function() {
